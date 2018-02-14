@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,6 +21,7 @@ public class SlackService {
     @Autowired
     private SlackDao slackDao;
     private User currentUser;
+    private List<User> allUsers;
     private List<String> dmChannels;
     private String webSocketUrl;
 
@@ -32,6 +34,7 @@ public class SlackService {
     public void startRTM(String slackToken) {
         RTM rtm = slackDao.startRTM(slackToken);
         currentUser = rtm.getUser();
+        allUsers = rtm.getUsers();
         dmChannels = rtm.getDmChannels();
         webSocketUrl = rtm.getWebSocketUrl();
     }
@@ -72,5 +75,12 @@ public class SlackService {
 
     public void setWebSocketUrl(String webSocketUrl) {
         this.webSocketUrl = webSocketUrl;
+    }
+    
+    /**
+     * @return complete list of users on team
+     */
+    public List<User> getAllUsers() {
+    	return Collections.unmodifiableList(allUsers);
     }
 }
