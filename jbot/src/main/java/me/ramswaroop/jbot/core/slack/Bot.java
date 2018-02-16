@@ -381,6 +381,11 @@ public abstract class Bot {
                         listIterator.remove();  // remove methods from the original list whose pattern do not match
                     }
                 }
+                
+                // if we have a pattern set, ignore messages with empty or null text
+                if (!StringUtils.isEmpty(pattern) && StringUtils.isEmpty(text)) {
+                	listIterator.remove();
+                }
             }
         }
         return null;
