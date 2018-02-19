@@ -251,7 +251,10 @@ public abstract class Bot {
             if (StringUtils.isEmpty(reply.getType())) {
                 reply.setType(EventType.MESSAGE.name().toLowerCase());
             }
-            reply.setText(encode(reply.getText()));
+            // XXX If the following line is active, Slack will not understand references.
+            // This is weird, because the Slack API https://api.slack.com/docs/message-formatting
+            // actually requires us to perform this encoding. It's unclear why that would confuse Slack.
+            //reply.setText(encode(reply.getText()));
             if (reply.getChannel() == null && event.getChannelId() != null) {
                 reply.setChannel(event.getChannelId());
             }
