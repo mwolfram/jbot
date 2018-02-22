@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>me.ramswaroop.jbot</groupId>
+        <groupId>com.incubedit</groupId>
         <artifactId>jbot-parent</artifactId>
         <version>3.0.3-SNAPSHOT</version>
         <relativePath>..</relativePath>
