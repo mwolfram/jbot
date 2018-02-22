@@ -5,18 +5,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.0.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     
-    <groupId>me.ramswaroop.jbot</groupId>
+    <groupId>com.incubedit</groupId>
     <artifactId>jbot-parent</artifactId>
     <version>3.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>JBot Parent</name>
+    <name>jbot-parent</name>
     <description>LEGO for building bots. Make Slack, Facebook and Twitter bots in Java in minutes.</description>
-    <url>https://github.com/ramswaroop/jbot</url>
+    <url>https://github.com/mwolfram/jbot</url>
 
     <modules>
         <module>jbot</module>
@@ -47,15 +47,37 @@
     </scm>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>incubed IT Release Repository</name>
+			<url>http://artifactory.incubed.local/nexus/content/repositories/releases</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>snapshots</id>
+			<name>incubed IT Snapshot Repository</name>
+			<url>http://artifactory.incubed.local/nexus/content/repositories/snapshots</url>
+			<layout>default</layout>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	<repositories>
+		<repository>
+			<id>incubed-release</id>
+			<url>http://artifactory.incubed.local/nexus/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+			<repository>
+			<id>incubed-snapshot</id>
+			<url>http://artifactory.incubed.local/nexus/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
