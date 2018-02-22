@@ -12,7 +12,7 @@
     <artifactId>jbot</artifactId>
     <name>JBot</name>
     <description>LEGO for building bots. Make Slack, Facebook and Twitter bots in Java in minutes.</description>
-    <url>https://github.com/ramswaroop/jbot</url>
+    <url>https://github.com/mwolfram/jbot</url>
 
     <developers>
         <developer>
