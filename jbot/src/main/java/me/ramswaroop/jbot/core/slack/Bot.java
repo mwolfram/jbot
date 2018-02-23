@@ -64,8 +64,7 @@ public abstract class Bot {
     /**
      * Service to access Slack APIs.
      */
-    @Autowired
-    protected SlackService slackService;
+    protected final SlackService slackService;
 
     /**
      * Class extending this must implement this as it's
@@ -86,7 +85,9 @@ public abstract class Bot {
     /**
      * Construct a map of all the controller methods to handle RTM Events.
      */
-    public Bot() {
+    @Autowired
+    public Bot(SlackService slackService) {
+    	this.slackService = slackService;
         Method[] methods = this.getClass().getMethods();
         for (Method method : methods) {
             if (method.isAnnotationPresent(Controller.class)) {
